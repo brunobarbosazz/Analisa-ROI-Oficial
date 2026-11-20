@@ -11,7 +11,7 @@
   const field = name => document.querySelector(`[data-field="${name}"]`);
   const copy = {
     login: ['Acesse sua conta', 'Entre para continuar no seu workspace.', 'Entrar'],
-    signup: ['Crie seu workspace', 'Comece seu teste de 7 dias. Você não precisa adicionar cartão.', 'Criar conta'],
+    signup: ['Crie seu workspace', 'Crie sua conta e acompanhe seus resultados.', 'Criar conta'],
     recover: ['Recuperar senha', 'Enviaremos um link para o e-mail cadastrado.', 'Enviar link'],
     reset: ['Defina uma nova senha', 'Escolha uma senha segura para sua conta.', 'Salvar senha']
   }[mode];
