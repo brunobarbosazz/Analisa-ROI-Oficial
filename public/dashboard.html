@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Nemofy</title>
+    <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
+    <link rel="stylesheet" href="/landing/fonts.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="/dashboard-local.css">
+    <script src="/dashboard-pages.js" defer></script>
+    <script src="/dashboard.js" defer></script>
+    </head>
+<body>
+        <div class="layout">
+        <header class="mobile-header">
+    <button class="mobile-hamburger" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+    <a class="mobile-brand" href="/dashboard" aria-label="Painel Nemofy"><img id="mobile-logo" src="/brand/nemofy-symbol.svg" alt="" width="30" height="30"><span>Nemofy</span></a>
+    <a href="/account" style="display:flex;">
+        <span class="avatar-initials" aria-label="Conta local">AR</span></a>
+</header>
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMenu()"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sb-mobile-close" onclick="toggleMenu()" title="Fechar menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+    <button class="sb-collapse-btn" onclick="toggleSidebarCollapse()" title="Recolher menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+    </button>
+    <div class="sidebar-logo">
+        <img id="sidebar-logo" src="/brand/nemofy-symbol.svg" alt="" width="36" height="36"><span class="sidebar-brand-name">Nemofy</span>
+        <img class="sidebar-icon" src="/brand/nemofy-symbol.svg" alt="" width="28" height="28" style="display:none;">
+        <button onclick="toggleTheme()" class="sb-theme-toggle" title="Alternar tema" style="background:none;border:none;cursor:pointer;color:var(--color-text-light);padding:4px;border-radius:6px;display:flex;align-items:center;transition:var(--transition);">
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18" style="display:none;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <div class="sidebar-section">
+            <button class="sidebar-link sidebar-dropdown-toggle" onclick="toggleDashDropdown()" style="background:none;border:none;width:100%;cursor:pointer;font-family:inherit;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                </svg>
+                Dashboards                <svg class="sidebar-chevron" id="dash-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:auto;transition:transform 0.2s;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            
+            <div class="sidebar-submenu" id="dash-submenu" style="display:block;">
+                                <div class="sidebar-dash-group">
+                    <button class="sidebar-sublink sidebar-sublink-btn" onclick="toggleDashPages('4932')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                        <span class="dash-name">Dashboard Principal</span>
+                        <svg class="dash-page-chevron" id="dash-chev-4932" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;transition:transform 0.2s;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="sidebar-dash-pages" id="dash-pages-4932" style="display:flex;flex-direction:column;">
+                                                <a href="/dashboard" class="sidebar-sublink active" style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1" />
+                            </svg>
+                            Painel                        </a>
+
+                                                                        <a href="/campaigns" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                            </svg>
+                            Campanhas                        </a>
+
+                                                                        <a href="/sales" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Vendas                        </a>
+
+                        <a href="/visits" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Visitas                        </a>
+
+                                                                        <a href="/rules" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Regras                                                            <span class="sidebar-badge">PRO</span>
+                                                    </a>
+
+                                                                        <a href="/integrations" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                            Integrações                        </a>
+
+                                                                        <a href="/notifications" class="sidebar-sublink " style="display:flex;width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;min-width:14px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                            Notificações                        </a>
+
+                                            </div>
+                </div>
+                            </div>
+        </div>
+    </nav>
+
+
+    
+    
+    <div class="sidebar-bottom-v2">
+                
+        <div class="sb-theme-collapsed" style="display:none;justify-content:center;width:100%;">
+            <button onclick="toggleTheme()" style="background:none;border:none;cursor:pointer;color:var(--color-text-light);padding:0;border-radius:6px;display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin:0 auto;">
+                <svg class="collapsed-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18" style="display:none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg class="collapsed-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+        </div>
+                        <div class="sb-plan-card">
+            <div class="sb-plan-header">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="sb-plan-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg></span>
+                    <span class="sb-plan-name">Trial</span>
+                </div>
+                                <span class="sb-plan-days-label" data-trial-days>6 dias</span>
+                            </div>
+            <div class="sb-plan-usage" style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                <span class="sb-plan-usage-item">R$ 0,00 faturado</span>
+                <a href="/placas" style="font-size:11px;font-weight:600;color:var(--color-primary);text-decoration:none;display:inline-flex;align-items:center;gap:3px" title="Ver placas de faturamento">🏆 Ver placas</a>
+            </div>
+            <div class="sb-plan-actions">
+                <a href="/plans" class="sb-plan-btn sb-plan-btn-primary">Planos</a>
+                <a href="/support" class="sb-plan-btn sb-plan-btn-secondary">Suporte</a>
+            </div>
+        </div>
+                
+        
+        <div class="sb-user-row">
+            <a href="/account" class="sb-avatar-wrap" title="Minha Conta">
+                <span class="avatar-initials" aria-label="Conta local">AR</span></a>
+            <div class="sb-user-meta">
+                <a href="/account" class="sb-user-name">Conta local</a>
+                <span class="sb-user-role">Trial</span>
+            </div>
+                        <a href="/settings" class="sb-action-icon" title="Configurações">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </a>
+                        <a href="/logout" class="sb-action-icon sb-action-logout" title="Sair">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+            </a>
+        </div>
+            </div>
+</aside>
+
+<main class="content" id="main-content">
+
+
+<style id="dash-filters-compact">
+.dash-filters .filter-row{gap:6px}
+.dash-filters .filter-row .btn-sm{padding:5px 9px;font-size:12.5px}
+.dash-filters .filter-row #btn-dash-refresh{padding:5px 10px!important}
+.dash-filters .filter-account{flex:0 0 auto;min-width:0}
+.dash-filters .filter-account select{width:auto!important;min-width:0!important;max-width:104px;padding:5px 24px 5px 9px;font-size:12.5px}
+</style>
+<div class="dash-filters animate-in">
+    <div class="filter-row">
+        <h1 class="page-title" style="margin:0;font-size:18px;white-space:nowrap;">Dashboard Principal</h1>
+        <div class="filter-periods">
+            <button onclick="changePeriod('today')" class="btn btn-sm btn-primary" data-period="today">Hoje</button>
+            <button onclick="changePeriod('yesterday')" class="btn btn-sm btn-secondary" data-period="yesterday">Ontem</button>
+            <button onclick="changePeriod('7')" class="btn btn-sm btn-secondary" data-period="7">7 dias</button>
+            <button onclick="changePeriod('15')" class="btn btn-sm btn-secondary" data-period="15" >15 dias</button>
+            <button onclick="changePeriod('30')" class="btn btn-sm btn-secondary" data-period="30" >30 dias</button>
+        </div>
+        <div class="filter-custom" style="position:relative;">
+            <button type="button" id="btn-date-picker" onclick="toggleDatePicker(event)"  class="btn btn-sm btn-secondary" style="display:flex;align-items:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span id="date-picker-label">Personalizado</span>
+            </button>
+            <div id="date-picker-pop" style="display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:1000;background:var(--color-card);border:1px solid var(--color-border);border-radius:10px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);min-width:280px;">
+
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <input type="hidden" id="date_from" value="">
+                    <input type="hidden" id="date_to" value="">
+                    <div class="lt-range-cal" data-from="#date_from" data-to="#date_to" data-auto-apply="false"></div>
+                    <div style="display:flex;gap:6px;justify-content:flex-end;border-top:1px solid var(--color-border);padding-top:10px;">
+                        <button type="button" onclick="closeDatePicker()" class="btn btn-sm btn-secondary">Cancelar</button>
+                        <button type="button" onclick="applyDateFilter()" class="btn btn-sm btn-primary">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+                                <button type="button" id="btn-dash-refresh" onclick="refreshDashboardWithSync()" class="btn btn-sm btn-secondary" style="padding:6px 12px;line-height:1;display:inline-flex;align-items:center;gap:6px;" title="Atualizar dados (sincroniza com Meta)">
+            <svg id="dash-refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M8 16H3v5"/></svg>
+            <span id="dash-refresh-label">Atualizar</span>
+        </button>
+                <div style="position:relative;">
+            <button type="button" onclick="dashToggleExport(event)" class="btn btn-sm btn-secondary" style="padding:6px 10px;line-height:1;display:inline-flex;align-items:center;gap:6px;" title="Exportar dados">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Exportar</span>
+            </button>
+            <div id="dash-export-pop" style="display:none;position:absolute;top:calc(100% + 6px);right:0;z-index:1000;background:var(--color-card);border:1px solid var(--color-border);border-radius:10px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);min-width:200px;">
+                <a class="btn btn-sm btn-secondary" style="display:block;margin-bottom:6px;" href="#" data-export="csv">CSV</a>
+                <a class="btn btn-sm btn-secondary" style="display:block;" href="#" data-export="xls">Excel (XLS)</a>
+            </div>
+        </div>
+        <button id="btn-privacy-toggle" onclick="togglePrivacyMode()" class="btn btn-sm btn-secondary" style="padding:6px 10px;line-height:1;" title="Ocultar nome dos produtos (modo gravação)">
+            <svg id="privacy-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="privacy-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+        </button>
+        <button onclick="enterEditMode()" class="btn btn-sm btn-secondary" style="padding:6px 10px;line-height:1;" title="Personalizar layout">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+        </button>
+        <button type="button" id="btn-metric-color" onclick="openMetricColor(event)" class="btn btn-sm btn-secondary" style="padding:6px 10px;line-height:1;position:relative;" title="Cor das métricas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </button>
+    </div>
+</div>
+
+<div id="metric-color-pop" style="display:none;position:absolute;z-index:1000;background:var(--color-card);border:1px solid var(--color-border);border-radius:10px;box-shadow:var(--shadow-md);padding:14px;min-width:300px;max-width:340px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cor por métrica</div>
+    <div style="font-size:11px;color:var(--color-text-muted);margin-bottom:10px;">Clique no quadrado para mudar a cor de cada métrica.</div>
+    <div style="max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;">
+                    <div class="metric-color-row" data-key="faturamento" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Faturamento</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="lucro" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Lucro</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="gasto_ads" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Gasto em Ads</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="cpa" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">CPA</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="arpu" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">ARPU</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="roas" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">ROAS</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="margem" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Margem</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="vendas_aprovadas" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Vendas Aprovadas</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="vendas_pendentes" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Vendas Pendentes</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+                    <div class="metric-color-row" data-key="chargeback" style="display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;">
+                <input type="color" class="mc-input" value="#1A6DFF" style="width:32px;height:28px;border:1px solid var(--color-border);border-radius:6px;background:transparent;cursor:pointer;padding:0;flex-shrink:0;">
+                <span style="flex:1;font-size:13px;">Chargeback / Reembolso</span>
+                <button type="button" class="mc-reset" title="Voltar ao padrão" style="background:transparent;border:none;color:var(--color-text-muted);cursor:pointer;padding:4px;font-size:11px;visibility:hidden;">limpar</button>
+            </div>
+            </div>
+    <div style="display:flex;gap:6px;justify-content:space-between;margin-top:12px;border-top:1px solid var(--color-border);padding-top:10px;">
+        <button type="button" onclick="resetAllMetricColors()" class="btn btn-sm btn-secondary" style="padding:5px 10px;font-size:12px;">Limpar todas</button>
+        <button type="button" onclick="closeMetricColor()" class="btn btn-sm btn-primary" style="padding:5px 10px;font-size:12px;">Fechar</button>
+    </div>
+</div>
+
+<style id="metric-color-css">
+</style>
+
+<div id="dash-edit-bar" style="display:none;" class="animate-in">
+    <div class="edit-bar-inner">
+        <div class="edit-bar-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+            <span>Modo de edição</span>
+        </div>
+        <div class="edit-bar-right">
+            <button onclick="resetDashLayout()" class="btn btn-sm btn-secondary">↻ Redefinir</button>
+            <button onclick="exitEditMode(false)" class="btn btn-sm btn-danger-outline">Cancelar</button>
+            <button onclick="exitEditMode(true)" class="btn btn-sm btn-primary">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div id="dash-hidden-shelf" style="display:none;" class="animate-in">
+    <div class="hidden-shelf-inner">
+        <span style="font-size:13px;color:var(--color-text-light);font-weight:500;">Seções ocultas:</span>
+        <div id="hidden-shelf-items" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    </div>
+</div>
+
+<div class="alert alert-info local-demo-note" role="status"><strong>Ambiente de demonstra&#231;&#227;o</strong> &middot; Os dados s&#227;o locais e ilustrativos. Nenhuma conta externa est&#225; conectada.</div>
+
+<div id="dash-sections" class="dash-cards-grid">
+
+<div class="dash-card dash-card-sm animate-in" data-card="faturamento" data-label="Faturamento">
+    <div class="kpi-label">Faturamento </div>
+    <div class="kpi-value ">R$ 0,00</div>
+    </div>
+
+<div class="dash-card dash-card-sm animate-in" data-card="lucro" data-label="Lucro">
+    <div class="kpi-label">Lucro </div>
+    <div class="kpi-value ">R$ 0,00</div>
+    <span class="kpi-change positive">
+        ↑ Positivo    </span>
+</div>
+
+<div class="dash-card dash-card-sm animate-in" data-card="gasto_ads" data-label="Gasto em Ads">
+    <div class="kpi-label">Gasto em Ads</div>
+    <div class="kpi-value">R$ 0,00</div>
+</div>
+
+<div class="dash-card dash-card-sm animate-in" data-card="cpa" data-label="CPA">
+    <div class="kpi-label">CPA</div>
+    <div class="kpi-value">R$ 0,00</div>
+</div>
+
+<div class="dash-card dash-card-sm animate-in" data-card="arpu" data-label="ARPU">
+    <div class="kpi-label">ARPU</div>
+    <div class="kpi-value">R$ 0,00</div>
+</div>
+
+<div class="dash-card dash-card-sm animate-in" data-card="roas" data-label="ROAS">
+    <div class="kpi-label">ROAS</div>
+    <div class="kpi-value ">0x</div>
+    <span class="kpi-change negative">
+        ↓ Baixo    </span>
+</div>
+
+<div class="dash-card dash-card-sm dash-card-sm-wide animate-in" data-card="vendas_aprovadas" data-label="Vendas Aprovadas">
+    <div class="kpi-label">Vendas Aprovadas</div>
+    <div class="kpi-value">0</div>
+    <div class="kpi-sub">R$ 0,00</div>
+</div>
+
+<div class="dash-card dash-card-sm dash-card-sm-wide animate-in" data-card="vendas_pendentes" data-label="Vendas Pendentes">
+    <div class="kpi-label">Vendas Pendentes</div>
+    <div class="kpi-value">R$ 0,00</div>
+    <div class="kpi-sub">0 vendas</div>
+</div>
+
+<div class="dash-card dash-card-sm dash-card-sm-wide animate-in" data-card="chargeback" data-label="Chargeback">
+    <div class="kpi-label">Chargeback</div>
+    <div class="kpi-value ">0%</div>
+    <div class="kpi-sub">0 vendas</div>
+</div>
+
+<div class="dash-card dash-card-sm dash-card-sm-wide animate-in" data-card="margem" data-label="Margem">
+    <div class="kpi-label">Margem</div>
+    <div class="kpi-value ">0%</div>
+    <span class="kpi-change ">
+            </span>
+</div>
+
+
+
+
+<div class="dash-card dash-card-lg animate-in" data-card="funil" data-label="Funil de Conversão (Meta Ads)">
+    <div class="card-top">
+        <h2 class="card-title">Funil de Conversão (Meta Ads)</h2>
+    </div>
+    <div class="card-body">
+                <div class="fx3-scroll">
+        <div class="fx3" style="--n: 5;">
+            <div class="fx3-chart">
+                <svg viewBox="0 0 500 200" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                        <clipPath id="fx3-clip"><path d="M0,85.60 L58.00,85.60 C100.00,85.60 100.00,85.60 142.00,85.60 L158.00,85.60 C200.00,85.60 200.00,85.60 242.00,85.60 L258.00,85.60 C300.00,85.60 300.00,85.60 342.00,85.60 L358.00,85.60 C400.00,85.60 400.00,85.60 442.00,85.60 L500.00,85.60 L500.00,114.40 L442.00,114.40 C400.00,114.40 400.00,114.40 358.00,114.40 L342.00,114.40 C300.00,114.40 300.00,114.40 258.00,114.40 L242.00,114.40 C200.00,114.40 200.00,114.40 158.00,114.40 L142.00,114.40 C100.00,114.40 100.00,114.40 58.00,114.40 L0,114.40 Z"/></clipPath>
+                                                <linearGradient id="fx3-g0" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#1A6DFF" stop-opacity=".78"/>
+                            <stop offset="1" stop-color="#1A6DFF"/>
+                        </linearGradient>
+                                                <linearGradient id="fx3-g1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#3b82f6" stop-opacity=".78"/>
+                            <stop offset="1" stop-color="#3b82f6"/>
+                        </linearGradient>
+                                                <linearGradient id="fx3-g2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#6366f1" stop-opacity=".78"/>
+                            <stop offset="1" stop-color="#6366f1"/>
+                        </linearGradient>
+                                                <linearGradient id="fx3-g3" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#8b5cf6" stop-opacity=".78"/>
+                            <stop offset="1" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                                                <linearGradient id="fx3-g4" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#10b981" stop-opacity=".78"/>
+                            <stop offset="1" stop-color="#10b981"/>
+                        </linearGradient>
+                                            </defs>
+
+                                        <line class="fx3-div" x1="100" x2="100" y1="0" y2="200"/>
+                                        <line class="fx3-div" x1="200" x2="200" y1="0" y2="200"/>
+                                        <line class="fx3-div" x1="300" x2="300" y1="0" y2="200"/>
+                                        <line class="fx3-div" x1="400" x2="400" y1="0" y2="200"/>
+                    
+                    <g clip-path="url(#fx3-clip)">
+                                                <rect x="0" y="0" width="100" height="200" fill="url(#fx3-g0)"/>
+                                                <rect x="100" y="0" width="100" height="200" fill="url(#fx3-g1)"/>
+                                                <rect x="200" y="0" width="100" height="200" fill="url(#fx3-g2)"/>
+                                                <rect x="300" y="0" width="100" height="200" fill="url(#fx3-g3)"/>
+                                                <rect x="400" y="0" width="100" height="200" fill="url(#fx3-g4)"/>
+                                            </g>
+                    <path class="fx3-edge" d="M0,85.60 L58.00,85.60 C100.00,85.60 100.00,85.60 142.00,85.60 L158.00,85.60 C200.00,85.60 200.00,85.60 242.00,85.60 L258.00,85.60 C300.00,85.60 300.00,85.60 342.00,85.60 L358.00,85.60 C400.00,85.60 400.00,85.60 442.00,85.60 L500.00,85.60 L500.00,114.40 L442.00,114.40 C400.00,114.40 400.00,114.40 358.00,114.40 L342.00,114.40 C300.00,114.40 300.00,114.40 258.00,114.40 L242.00,114.40 C200.00,114.40 200.00,114.40 158.00,114.40 L142.00,114.40 C100.00,114.40 100.00,114.40 58.00,114.40 L0,114.40 Z"/>
+                </svg>
+
+                <div class="fx3-pcts">
+                                        <span class="fx3-pct">0%</span>
+                                        <span class="fx3-pct">0%</span>
+                                        <span class="fx3-pct">0%</span>
+                                        <span class="fx3-pct">0%</span>
+                                        <span class="fx3-pct">0%</span>
+                                    </div>
+            </div>
+
+            <div class="fx3-cols">
+                                <div class="fx3-col" style="--c: #1A6DFF;">
+                    <div class="fx3-val">0</div>
+                    <div class="fx3-label">Cliques</div>
+                </div>
+                                <div class="fx3-col" style="--c: #3b82f6;">
+                    <div class="fx3-val">0</div>
+                    <div class="fx3-label">Vis. Página</div>
+                </div>
+                                <div class="fx3-col" style="--c: #6366f1;">
+                    <div class="fx3-val">0</div>
+                    <div class="fx3-label">ICs</div>
+                </div>
+                                <div class="fx3-col" style="--c: #8b5cf6;">
+                    <div class="fx3-val">0</div>
+                    <div class="fx3-label">Vendas Inic.</div>
+                </div>
+                                <div class="fx3-col" style="--c: #10b981;">
+                    <div class="fx3-val">0</div>
+                    <div class="fx3-label">Vendas Apr.</div>
+                </div>
+                            </div>
+        </div>
+        </div>
+
+        <style>
+        .fx3-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+        .fx3{--fx-ink:var(--color-text,#EDF2FF);--fx-ink-2:var(--color-text-light,rgba(237,242,255,.6));--fx-line:var(--color-border,rgba(255,255,255,.12));
+            min-width:620px;padding:0}
+        .fx3-chart{position:relative;height:130px}
+        .fx3-chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;
+            animation:fx3-wipe 1.3s cubic-bezier(.22,1,.36,1) backwards}
+        .fx3-div{stroke:color-mix(in srgb,var(--fx-ink) 22%,transparent);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:3 5}
+        .fx3-edge{fill:none;stroke:rgba(255,255,255,.28);stroke-width:1.5;vector-effect:non-scaling-stroke}
+
+        .fx3-pcts{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--n),1fr);pointer-events:none}
+        .fx3-pct{display:grid;place-items:center;font-size:15px;font-weight:750;letter-spacing:-.02em;color:#fff;
+            text-shadow:0 1px 3px rgba(0,0,0,.35);font-variant-numeric:tabular-nums;
+            animation:fx3-fade .8s .5s backwards}
+
+        .fx3-cols{display:grid;grid-template-columns:repeat(var(--n),1fr);margin-top:12px}
+        .fx3-col{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 6px}
+        .fx3-val{font-size:20px;font-weight:750;letter-spacing:-.04em;line-height:1;color:var(--fx-ink);font-variant-numeric:tabular-nums}
+        .fx3-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:650;letter-spacing:.1em;text-transform:uppercase;color:var(--fx-ink-2);white-space:nowrap}
+        @keyframes fx3-wipe{from{clip-path:inset(-20% 100% -20% 0)}to{clip-path:inset(-20% -5% -20% -5%)}}
+        @keyframes fx3-fade{from{opacity:0}}
+        @media(max-width:700px){ .fx3-chart{height:110px} }
+        @media(prefers-reduced-motion:reduce){.fx3-chart svg,.fx3-pct{animation:none!important}}
+        </style>
+    </div>
+</div>
+
+<div class="dash-card dash-card-md animate-in" data-card="aprovacao" data-label="Taxa de Aprovação">
+    <div class="card-top">
+        <h2 class="card-title">Taxa de Aprovação</h2>
+    </div>
+    <div class="card-body">
+                    <p style="color:var(--color-text-light);text-align:center;padding:20px 0;">Sem dados</p>
+            </div>
+</div>
+
+<div class="dash-card dash-card-md animate-in" data-card="vendas_pagamento" data-label="Vendas por Pagamento">
+    <div class="card-top">
+        <h2 class="card-title">Vendas por Pagamento</h2>
+    </div>
+    <div class="card-body">
+                    <div class="empty-state-sm"><p>Nenhuma venda registrada</p></div>
+            </div>
+</div>
+
+
+<div class="dash-card dash-card-md animate-in" data-card="vendas_posicionamento" data-label="Vendas por Posicionamento">
+    <div class="card-top">
+        <h2 class="card-title">Vendas por Posicionamento</h2>
+    </div>
+    <div class="card-body">
+                    <div class="empty-state-sm"><p>Nenhuma venda com posicionamento identificado</p></div>
+            </div>
+</div>
+
+
+
+<div class="dash-card animate-in" data-card="vendas_horario" data-label="Vendas por Horário / Fonte" style="grid-column: 1 / -1;">
+    <div class="card-top">
+        <h2 class="card-title">Vendas por Horário / Fonte</h2>
+    </div>
+    <div class="card-body">
+        <div class="hourly-source-wrap">
+            <div class="hourly-chart-col">
+                                    <div class="empty-state-sm" style="padding:8px 0 16px;"><p>Nenhuma venda registrada no período</p></div>
+                                <div class="hourly-chart">
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>00h – 00h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">00h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>01h – 01h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">01h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>02h – 02h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">02h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>03h – 03h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">03h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>04h – 04h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">04h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>05h – 05h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">05h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>06h – 06h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">06h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>07h – 07h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">07h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>08h – 08h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">08h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>09h – 09h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">09h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>10h – 10h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">10h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>11h – 11h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">11h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>12h – 12h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">12h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>13h – 13h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">13h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>14h – 14h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">14h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>15h – 15h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">15h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>16h – 16h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">16h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>17h – 17h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">17h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>18h – 18h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">18h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>19h – 19h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">19h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>20h – 20h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">20h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>21h – 21h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">21h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>22h – 22h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">22h</span>
+                    </div>
+                                        <div class="hourly-col">
+                        <div class="hourly-tooltip">
+                            <strong>23h – 23h59</strong>
+                            <span>0 vendas</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="hourly-bar" style="height: 0%;"></div>
+                        <span class="hourly-lbl">23h</span>
+                    </div>
+                                    </div>
+            </div>
+            <div class="hourly-source-col">
+                <h3 class="source-col-title">Vendas por Fonte</h3>
+                                    <div class="empty-state-sm" style="padding:12px 0;"><p>Nenhuma venda registrada</p></div>
+                            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.hourly-chart{display:grid;grid-template-columns:repeat(24, 1fr);gap:6px;align-items:end;height:220px;padding:12px 4px 0;}
+.hourly-col{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+.hourly-bar{width:100%;max-width:32px;background:linear-gradient(180deg, #3b82f6 0%, #1A6DFF 100%);border-radius:4px 4px 0 0;min-height:0;transition:filter 0.15s;box-shadow:0 -2px 8px rgba(26,109,255,0.2);}
+.hourly-col:not(.has-sales) .hourly-bar{background:rgba(148,163,184,0.15);box-shadow:none;height:0 !important;}
+.hourly-col:hover .hourly-bar{filter:brightness(1.2);}
+.hourly-lbl{font-size:10px;color:var(--color-text-light);margin-top:8px;font-variant-numeric:tabular-nums;font-weight:500;}
+.hourly-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--color-text);color:var(--color-card);padding:8px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.15s, transform 0.15s;z-index:20;display:flex;flex-direction:column;gap:2px;box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+.hourly-tooltip strong{font-size:12px;font-weight:700;}
+.hourly-tooltip span{font-size:11px;opacity:0.85;}
+.hourly-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--color-text);}
+.hourly-col:hover .hourly-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+.hourly-source-wrap{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start;}
+.hourly-chart-col{min-width:0;}
+.hourly-source-col{min-width:0;border-left:1px solid var(--color-border);padding-left:24px;}
+.source-col-title{font-size:14px;font-weight:600;color:var(--color-text);margin:0 0 12px;padding:0;}
+@media(max-width:768px){
+    .hourly-source-wrap{grid-template-columns:1fr;gap:20px;}
+    .hourly-source-col{border-left:none;border-top:1px solid var(--color-border);padding-left:0;padding-top:16px;}
+    .hourly-chart{height:160px;gap:2px;padding:8px 2px 0;}
+    .hourly-lbl{font-size:8px;margin-top:4px;}
+    .hourly-col:nth-child(even) .hourly-lbl{opacity:0;}
+}
+
+</style>
+
+<div class="dash-card dash-card-lg animate-in" data-card="vendas_geo" data-label="Vendas por Localização" style="grid-column: 1 / -1;">
+    <div class="card-top" style="align-items:center;gap:12px;flex-wrap:wrap;">
+        <h2 class="card-title">Vendas por Localização</h2>
+            </div>
+    <div class="card-body">
+                    <div class="empty-state-sm" style="padding:8px 0 16px;"><p>Sem dados de localização neste período</p></div>
+                <div class="geo-grid">
+            <div class="geo-map geo-map-world">
+                <div class="geo-map-label">🌎 Mundo</div>
+                <div class="geo-map-svgwrap" data-map-src="/assets/maps/world.svg?v=1794489667"></div>
+                            </div>
+                        <div class="geo-map geo-map-br">
+                <div class="geo-map-label">🇧🇷 Brasil</div>
+                <div class="geo-map-svgwrap geo-map-svgwrap-center" data-map-src="/assets/maps/br.svg?v=1794489667"></div>
+                            </div>
+                        <div class="geo-tooltip" id="geoTooltip">
+                <strong id="gtName">-</strong>
+                <span id="gtQty">-</span>
+                <span id="gtRev">-</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.state-peak-badge{background:rgba(26,109,255,0.12);color:#3b82f6;font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;}
+.geo-legend{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:10px;color:var(--color-text-light);text-transform:uppercase;letter-spacing:0.5px;}
+.geo-legend-lbl{opacity:0.8;}
+.geo-legend-grad{width:80px;height:6px;border-radius:3px;background:linear-gradient(90deg, rgba(26,109,255,0.15), #1A6DFF, #60a5fa);}
+.geo-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;}
+.geo-grid > .geo-map{height:100%;display:flex;flex-direction:column;}
+.geo-grid > .geo-map > .geo-map-svgwrap{flex:1;}
+.geo-map{background:var(--color-bg);border-radius:14px;padding:16px;position:relative;overflow:hidden;}
+.geo-map-label{position:absolute;top:12px;left:16px;font-size:11px;font-weight:700;color:var(--color-text-light);text-transform:uppercase;letter-spacing:0.6px;z-index:2;}
+.geo-map-svgwrap{display:flex;align-items:center;justify-content:center;padding:12px 0;width:100%;}
+.geo-map-svgwrap-center{padding:24px 8px;min-height:300px;}
+.geo-map-svgwrap:empty{min-height:220px;}
+.geo-map-svgwrap-center svg{margin:0 auto;}
+.world-map-svg{width:100%;height:auto;max-height:360px;display:block;}
+.br-map-svg,.country-map-svg{width:100%;height:auto;max-width:100%;max-height:340px;display:block;margin:0 auto;overflow:hidden;}
+.geo-map-zoom .world-map-svg{max-height:340px;}
+
+.world-map-svg path,.br-map-svg path,.country-map-svg path,.geo-map svg path{fill:rgba(148,163,184,0.10);stroke:rgba(148,163,184,0.18);stroke-width:0.4;transition:fill 0.15s, filter 0.15s;cursor:pointer;}
+.world-map-svg path:hover,.br-map-svg path:hover,.country-map-svg path:hover,.geo-map svg path:hover{fill:#60a5fa !important;filter:brightness(1.2) drop-shadow(0 0 8px rgba(26,109,255,0.6));}
+.geo-tooltip{position:absolute;background:rgba(6,15,31,0.96);color:#fff;padding:8px 12px;border-radius:8px;font-size:12px;pointer-events:none;opacity:0;transition:opacity 0.12s;z-index:20;display:flex;flex-direction:column;gap:2px;box-shadow:0 8px 24px rgba(0,0,0,0.45);border:1px solid rgba(26,109,255,0.3);white-space:nowrap;}
+.geo-tooltip.visible{opacity:1;}
+.geo-tooltip strong{font-size:13px;font-weight:700;}
+.geo-tooltip span{font-size:11px;opacity:0.85;}
+.geo-rank-inline{list-style:none;padding:12px 4px 0;margin:0;display:flex;flex-direction:column;gap:5px;border-top:1px solid var(--color-border);margin-top:8px;}
+.geo-rank-inline li{display:grid;grid-template-columns:1fr 70px 32px;align-items:center;gap:10px;font-size:11px;}
+.grn{color:var(--color-text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.grb{position:relative;height:5px;border-radius:3px;background:rgba(148,163,184,0.15);overflow:hidden;}
+.grb span{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:3px;}
+.grq{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--color-text);}
+.state-foot-tag{font-size:10px;padding:4px 10px;background:rgba(148,163,184,0.12);border-radius:999px;display:inline-block;color:var(--color-text-light);}
+@media(max-width:900px){
+    .geo-grid{grid-template-columns:1fr;}
+    .world-map-svg,.br-map-svg,.country-map-svg{max-height:280px;}
+}
+</style>
+
+<div class="dash-card dash-card-cost dash-card-cost-start dash-card-product animate-in" data-card="vendas_produto" data-label="Vendas por Produto">
+    <div class="kpi-label" style="display:flex;align-items:center;justify-content:space-between;">
+        Vendas por Produto
+        <span style="font-size:11px;color:var(--color-text-light);text-transform:none;letter-spacing:0;font-weight:400;">0 produtos</span>
+    </div>
+    <div class="card-body product-card-body" style="padding:0;">
+                    <div class="empty-state-sm" style="padding:24px;"><p>Nenhuma venda registrada</p></div>
+            </div>
+</div>
+
+<div class="dash-card dash-card-cost animate-in" data-card="taxas_plataforma" data-label="Taxas da Plataforma">
+    <div class="kpi-label" style="display:flex;align-items:center;justify-content:space-between;">
+        Taxas Plataforma
+        <button onclick="openFeesModal('platform')" style="background:none;border:none;cursor:pointer;color:var(--color-text-light);padding:2px;" title="Configurar taxas">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+    </div>
+    <div class="kpi-value" style="color:#f59e0b;">R$ 0,00</div>
+    <div class="kpi-sub" style="font-size:11px;color:var(--color-text-light);">
+        Pix/Boleto: —                    </div>
+</div>
+
+<div class="dash-card dash-card-cost animate-in" data-card="impostos" data-label="Impostos">
+    <div class="kpi-label" style="display:flex;align-items:center;justify-content:space-between;">
+        Impostos da empresa
+        <button onclick="openTaxModal()" style="background:none;border:none;cursor:pointer;color:var(--color-text-light);padding:2px;" title="Configurar impostos">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+    </div>
+    <div class="kpi-value" style="color:#f59e0b;">R$ 0,00</div>
+    <div class="kpi-sub" style="font-size:11px;color:var(--color-text-light);">
+        Não configurado    </div>
+</div>
+
+<div class="dash-card dash-card-cost animate-in" data-card="imposto_meta" data-label="Imposto Meta Ads">
+    <div class="kpi-label" style="display:flex;align-items:center;justify-content:space-between;">
+        Imposto Meta Ads
+        <button onclick="openMetaTaxModal()" style="background:none;border:none;cursor:pointer;color:var(--color-text-light);padding:2px;" title="Configurar imposto Meta Ads">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+    </div>
+    <div class="kpi-value" style="color:#f59e0b;">R$ 0,00</div>
+    <div class="kpi-sub" style="font-size:11px;color:var(--color-text-light);">
+        Não configurado    </div>
+</div>
+
+</div>
+
+<style>
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+
+<style>
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes dashIndAnim{0%{opacity:.3;transform:scaleX(.3)}50%{opacity:1;transform:scaleX(1)}100%{opacity:.3;transform:scaleX(.3)}}
+.btn.syncing{opacity:.7;cursor:wait}
+.sync-toast{position:fixed;top:20px;right:20px;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:500;z-index:9999;display:none;animation:slideIn .3s ease;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.sync-toast.success{background:var(--color-success, #22c55e);color:#fff}
+.sync-toast.error{background:var(--color-danger, #ef4444);color:#fff}
+.sync-toast.warning{background:var(--color-warning, #f59e0b);color:#fff}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+</style>
+
+<div id="fees-modal-overlay" onclick="closeFeesModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9998;"></div>
+<div id="fees-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:var(--color-card);border:1px solid var(--color-border);border-radius:12px;padding:24px;width:420px;max-width:92vw;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);">
+    <h3 style="margin:0 0 16px;font-size:16px;font-weight:600;">⚙️ Configurar Taxas da Plataforma</h3>
+    <div style="margin-bottom:14px;padding:10px 12px;background:#FEF3C7;border:1px solid #FCD34D;border-radius:8px;font-size:12px;color:#78350F;line-height:1.45;">
+        <strong>Atenção:</strong> algumas plataformas já enviam o valor da venda <u>com a taxa descontada</u>. Só cadastre se ela enviar o <strong>valor bruto</strong>. Senão vai descontar duas vezes.
+    </div>
+
+    <div style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--color-text-light);margin:4px 0 8px;letter-spacing:.5px;">Taxa principal (pix, boleto)</div>
+    <div style="margin-bottom:12px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Taxa fixa por venda pix, boleto (R$)</label>
+        <input type="number" id="fee-fixed" class="form-input" step="0.01" min="0" placeholder="0.00" style="width:100%;">
+    </div>
+    <div style="margin-bottom:12px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Taxa percentual pix, boleto (%)</label>
+        <input type="number" id="fee-percent" class="form-input" step="0.01" min="0" max="100" placeholder="0.00" style="width:100%;">
+    </div>
+
+    <div style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--color-text-light);margin:18px 0 8px;letter-spacing:.5px;">Taxa cartão (só vendas no cartão)</div>
+    <div style="margin-bottom:12px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Taxa percentual cartão (%)</label>
+        <input type="number" id="fee-card-percent" class="form-input" step="0.01" min="0" max="100" placeholder="0.00" style="width:100%;">
+    </div>
+    <div style="margin-bottom:12px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Taxa fixa cartão (R$)</label>
+        <input type="number" id="fee-card-fixed" class="form-input" step="0.01" min="0" placeholder="0.00" style="width:100%;">
+    </div>
+
+    <div style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--color-text-light);margin:18px 0 8px;letter-spacing:.5px;">Order bump</div>
+    <div style="margin-bottom:14px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Taxa fixa por order bump (R$)</label>
+        <input type="number" id="fee-bump" class="form-input" step="0.01" min="0" placeholder="0.00" style="width:100%;">
+        <div style="font-size:10px;color:var(--color-text-light);margin-top:3px;">Cobrada por cada item extra (bump) adicionado à venda principal.</div>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--color-text-light);margin:18px 0 8px;letter-spacing:.5px;">Coprodutor (split)</div>
+    <div style="margin-bottom:14px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">% que o coprodutor recebe do bruto (%)</label>
+        <input type="number" id="fee-coproducer" class="form-input" step="0.01" min="0" max="100" placeholder="0.00" style="width:100%;">
+        <div style="font-size:10px;color:var(--color-text-light);margin-top:3px;">Se você tem split com coprodutor, informe o % dele. Ex: 15 = coprodutor fica com 15% do bruto.</div>
+    </div>
+
+    <div style="font-size:11px;color:var(--color-text-light);margin-bottom:16px;padding:8px;background:var(--color-bg);border-radius:6px;line-height:1.55;">
+        💡 <strong>Cartão</strong> → bruto × %cartão + fixo cartão<br>
+        💡 <strong>Pix/Boleto/Outros</strong> → bruto × % + fixo<br>
+        💡 Bumps somam: bumps × taxa bump<br>
+        💡 <strong>Coprodutor</strong>: (bruto − taxa) × %coprodutor
+    </div>
+
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="closeFeesModal()" class="btn btn-sm btn-secondary">Cancelar</button>
+        <button onclick="saveFeesConfig()" class="btn btn-sm btn-primary" id="fees-save-btn">Salvar</button>
+    </div>
+</div>
+
+<div id="tax-modal-overlay" onclick="closeTaxModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9998;"></div>
+<div id="tax-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:var(--color-card);border:1px solid var(--color-border);border-radius:12px;padding:24px;width:380px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.4);">
+    <h3 style="margin:0 0 16px;font-size:16px;font-weight:600;">⚙️ Configurar Imposto da Empresa</h3>
+    <div style="margin-bottom:14px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Imposto sobre faturamento (%)</label>
+        <input type="number" id="fee-tax" class="form-input" step="0.01" min="0" max="100" placeholder="0.00" style="width:100%;">
+        <div style="font-size:10px;color:var(--color-text-light);margin-top:3px;">Imposto sobre as vendas dos infoprodutos.</div>
+    </div>
+    <div style="font-size:11px;color:var(--color-text-light);margin-bottom:16px;padding:8px;background:var(--color-bg);border-radius:6px;">
+        💡 <strong>Imposto</strong> = faturamento × %
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="closeTaxModal()" class="btn btn-sm btn-secondary">Cancelar</button>
+        <button onclick="saveTaxConfig()" class="btn btn-sm btn-primary" id="tax-save-btn">Salvar</button>
+    </div>
+</div>
+
+<div id="meta-tax-modal-overlay" onclick="closeMetaTaxModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9998;"></div>
+<div id="meta-tax-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:var(--color-card);border:1px solid var(--color-border);border-radius:12px;padding:24px;width:380px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.4);">
+    <h3 style="margin:0 0 16px;font-size:16px;font-weight:600;">⚙️ Configurar Imposto Meta Ads</h3>
+    <div style="margin-bottom:14px;padding:10px 12px;background:#FEF3C7;border:1px solid #FCD34D;border-radius:8px;font-size:12px;color:#78350F;line-height:1.45;">
+        <strong>Meta Ads:</strong> a Meta cobra um imposto sobre o gasto em anúncios (CIDE/PIS/COFINS). Configure aqui a alíquota informada na sua conta de anúncios.
+    </div>
+    <div style="margin-bottom:14px;">
+        <label style="font-size:12px;font-weight:500;color:var(--color-text-light);display:block;margin-bottom:4px;">Alíquota (%)</label>
+        <input type="number" id="fee-meta-tax" class="form-input" step="0.01" min="0" max="100" placeholder="0.00" style="width:100%;">
+    </div>
+    <div style="font-size:11px;color:var(--color-text-light);margin-bottom:16px;padding:8px;background:var(--color-bg);border-radius:6px;">
+        💡 <strong>Imposto Meta Ads</strong> = gasto em ads × %
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="closeMetaTaxModal()" class="btn btn-sm btn-secondary">Cancelar</button>
+        <button onclick="saveMetaTaxConfig()" class="btn btn-sm btn-primary" id="meta-tax-save-btn">Salvar</button>
+    </div>
+</div>
+
+</main>
+    </div>
+    
+    
+
+    <div id="lt-confirm-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;">
+        <div id="lt-confirm-box" style="background:var(--color-card);border:1px solid var(--color-border);border-radius:14px;padding:28px 32px 24px;max-width:400px;width:90%;text-align:center;transform:scale(0.95);transition:transform 0.2s;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(26,109,255,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6DFF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+            </div>
+            <p id="lt-confirm-msg" style="font-size:15px;font-weight:500;color:var(--color-text);margin:0 0 24px;line-height:1.5;"></p>
+            <div style="display:flex;gap:10px;">
+                <button id="lt-confirm-cancel" style="flex:1;padding:10px 0;border-radius:8px;border:1px solid var(--color-border);background:var(--color-card);color:var(--color-text);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;">Cancelar</button>
+                <button id="lt-confirm-ok" style="flex:1;padding:10px 0;border-radius:8px;border:none;background:#1A6DFF;color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+      <noscript>Ative o JavaScript para usar os controles locais do painel Nemofy.</noscript>
+</body>
+</html>

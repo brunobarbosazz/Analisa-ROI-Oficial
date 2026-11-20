@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fc">
+  <title>Acessar · Nemofy</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/landing/fonts.css">
+  <link rel="stylesheet" href="/auth.css">
+  <script src="/auth.js" defer></script>
+</head>
+<body>
+  <main class="auth-layout">
+    <a class="auth-brand" href="/" aria-label="Nemofy, início">
+      <img src="/brand/nemofy-symbol.svg" alt="" width="38" height="38">
+      <span>NEMOFY</span>
+    </a>
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-orb" aria-hidden="true">↗</div>
+      <p class="auth-kicker">SUA OPERAÇÃO, COM MAIS CLAREZA</p>
+      <h1 id="auth-title">Acesse sua conta</h1>
+      <p id="auth-description" class="auth-description">Entre para continuar no seu workspace.</p>
+      <div id="auth-status" class="auth-status" role="status" aria-live="polite" hidden></div>
+      <div id="auth-demo" class="auth-demo" hidden>
+        <p id="auth-demo-copy">A autenticação ainda não está configurada neste ambiente.</p>
+        <a class="auth-submit auth-demo-link" href="/dashboard">Abrir demonstração local <span aria-hidden="true">→</span></a>
+      </div>
+      <form id="auth-form" novalidate>
+        <label class="auth-field" data-field="name" hidden>
+          <span>Nome</span>
+          <input name="name" autocomplete="name" maxlength="100" placeholder="Seu nome">
+        </label>
+        <label class="auth-field" data-field="email">
+          <span>E-mail</span>
+          <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="voce@empresa.com.br">
+        </label>
+        <label class="auth-field" data-field="password">
+          <span id="password-label">Senha</span>
+          <input name="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" placeholder="Mínimo de 10 caracteres">
+        </label>
+        <label class="auth-field" data-field="confirm" hidden>
+          <span>Confirmar senha</span>
+          <input name="confirm" type="password" autocomplete="new-password" minlength="10" maxlength="128" placeholder="Digite a senha novamente">
+        </label>
+        <button id="auth-submit" class="auth-submit" type="submit">Entrar</button>
+      </form>
+      <nav id="auth-links" class="auth-links" aria-label="Opções de conta">
+        <a href="/recover" data-link="recover">Esqueci minha senha</a>
+        <a href="/signup" data-link="signup">Criar conta</a>
+        <a href="/login" data-link="login" hidden>Já tenho uma conta</a>
+      </nav>
+      <p class="auth-note">O teste de 7 dias é validado no servidor. Alterar o relógio ou os dados do navegador não estende o acesso.</p>
+    </section>
+    <p class="auth-foot">© 2026 Nemofy</p>
+  </main>
+</body>
+</html>

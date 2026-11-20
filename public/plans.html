@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fc">
+  <title>Planos · Nemofy</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/landing/fonts.css">
+  <link rel="stylesheet" href="/auth.css">
+</head>
+<body>
+  <main class="plans-layout">
+    <header class="plans-header"><a class="auth-brand" href="/"><img src="/brand/nemofy-symbol.svg" alt="" width="38" height="38"><span>NEMOFY</span></a><a class="plans-login" href="/login">Entrar</a></header>
+    <section class="plans-intro"><p class="auth-kicker">PLANOS</p><h1>Continue com a Nemofy.</h1><p>Seu período de Trial terminou. Escolha um plano para recuperar o acesso quando a cobrança estiver ativada.</p><div id="plans-state" role="status" hidden></div></section>
+    <section class="plans-grid" aria-label="Planos disponíveis">
+      <article class="plan-card"><p class="plan-tag">PARA COMEÇAR</p><h2>Basic</h2><p class="plan-price">R$ 47 <small>/mês</small></p><ul><li>2 contas de anúncios</li><li>2 pixels</li><li>1 dashboard</li><li>2 regras de automação</li></ul><button type="button" disabled>Contratação indisponível</button></article>
+      <article class="plan-card featured"><p class="plan-tag">PARA CRESCER</p><h2>Pro</h2><p class="plan-price">R$ 97 <small>/mês</small></p><ul><li>5 contas de anúncios</li><li>5 pixels</li><li>5 dashboards</li><li>7 regras de automação</li></ul><button type="button" disabled>Contratação indisponível</button></article>
+      <article class="plan-card"><p class="plan-tag">PARA ESCALAR</p><h2>Scale</h2><p class="plan-price">R$ 247 <small>/mês</small></p><ul><li>Contas e pixels ilimitados</li><li>Dashboards ilimitados</li><li>15 regras de automação</li><li>Duplicação automática</li></ul><button type="button" disabled>Contratação indisponível</button></article>
+    </section>
+    <p class="plans-note">Os preços são referências atuais do produto. Nenhuma cobrança é simulada. A contratação só será liberada após configurar e validar um gateway de pagamento.</p>
+  </main>
+  <script>
+    const state = document.querySelector('#plans-state');
+    const reason = new URLSearchParams(location.search).get('reason');
+    if (reason === 'trial_expired') { state.textContent = 'Seu Trial de 7 dias terminou. O painel está bloqueado pelo servidor até haver uma assinatura válida.'; state.hidden = false; }
+  </script>
+</body>
+</html>
