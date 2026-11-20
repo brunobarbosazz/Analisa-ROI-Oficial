@@ -1,0 +1,21 @@
+{
+  "name": "nemofy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demonstração local da plataforma Nemofy",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node scripts/build-check.js",
+    "typecheck": "node --check plan-catalog.js && node --check app.js && node --check theme.js && node --check ux.js && node --check public/landing-template.js && node --check public/landing-mount.js && node --check sales.js && node --check server.js && node --check lib/saas-auth.js && node --check api/app.js && node --check api/auth/[action].js && node --check public/auth.js && node --check public/dashboard-pages.js && node --check public/dashboard.js",
+    "lint": "npm run typecheck",
+    "test": "node scripts/smoke.js && node scripts/saas-auth-test.js",
+    "create-zip": "powershell -ExecutionPolicy Bypass -File scripts/create-zip.ps1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "jsrepo": "^3.8.3"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/app.js": {
+      "includeFiles": "public/dashboard.html",
+      "maxDuration": 15
+    },
+    "api/auth/[action].js": {
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    { "source": "/auth/confirm", "destination": "/api/auth/confirm" },
+    { "source": "/login", "destination": "/auth.html" },
+    { "source": "/signup", "destination": "/auth.html" },
+    { "source": "/recover", "destination": "/auth.html" },
+    { "source": "/reset-password", "destination": "/auth.html" },
+    { "source": "/plans", "destination": "/plans.html" },
+    { "source": "/dashboard", "destination": "/api/app?route=%2Fdashboard" },
+    { "source": "/campaigns", "destination": "/api/app?route=%2Fcampaigns" },
+    { "source": "/sales", "destination": "/api/app?route=%2Fsales" },
+    { "source": "/visits", "destination": "/api/app?route=%2Fvisits" },
+    { "source": "/rules", "destination": "/api/app?route=%2Frules" },
+    { "source": "/integrations", "destination": "/api/app?route=%2Fintegrations" },
+    { "source": "/notifications", "destination": "/api/app?route=%2Fnotifications" },
+    { "source": "/placas", "destination": "/api/app?route=%2Fplacas" },
+    { "source": "/support", "destination": "/api/app?route=%2Fsupport" },
+    { "source": "/account", "destination": "/api/app?route=%2Faccount" },
+    { "source": "/settings", "destination": "/api/app?route=%2Fsettings" },
+    { "source": "/logout", "destination": "/api/app?route=%2Flogout" }
+  ]
+}
